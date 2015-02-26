@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Territory Mapper Demo Page</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="mapper.js"></script>
+<script type="text/javascript" src="geocodes.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="canvas_wrapper"></div>
+		<div id="right_column">
+			<div id="territories">
+				<div id="list"></div>
+				<div id="input_fields">
+
+					<form id="left_input" class="inputs" action="#">
+						Blue: <label id="left_addresses"></label>
+						<span id="territory_number">Territory number:</span>
+						<input type="text" id="left" class="terr" val="" autocomplete="off" />
+						<span id="territory_exists"></span>
+						<input type="submit" class="input_submit" />
+					</form>
+					<form id="right_input" class="inputs" action="#">
+						<input type="hidden" id="right" class="terr" />Green: <label id="right_addresses"></label>
+					</form>
+					<div class="clear_fix"></div>
+				</div>
+				<div class="clear_fix"></div>
+			</div>
+			<div id="controls">
+				<div id="mode" class="build">
+					<a href="#" onclick="tm.changeMode('build'); return false;" class="view">View mode</a>
+					<a href="#" onclick="tm.changeMode('view'); return false;" class="build">Build mode</a>
+				</div>
+			</div>
+		</div>
+		<div class="clear_fix space"></div>
+		<div id="options">
+		<span class="ctrl">CTRL</span><span class="shift">Shift</span><span class="alt">ALT</span><span class="lmb">Left mouse button</span><span class="zoom">Zoom</span>
+		<div class="clear_fix space"></div>
+		</div>
+		<div id="instruction">
+			<p><strong>NOTE: This code is still in development and has some open defects.</strong> If lines disappear, zoom in or out or move the map. Also, the points on the map are arbitrary latitude/longitude points and do not coincide with real addresses.</p>
+			<h3>Instructions:</h3>
+			<p>The purpose of this demo page is to show how custom territories may be drawn using the JavaScript canvas. The territories are drawn starting with the entire outer boundary and are split in two until you have created all your territories. You start the first segment and draw by clicking points until you click the starting point. Then you use CTRL+Click to start on the existing line and close it somewhere on the opposite end by clicking on the line again. Keep doing this until the territories are done. You may click anywhere on a line to add a point and move this to tweak your borders. The territory boundaries can be updated easily and the number of addresses in each territory dynamically updates. See additional instructions below.</p>
+			<p>CTRL - build, ALT - stops building, delete, SHIFT - select</p>
+			<ul>
+				<li>CTRL + Shift + Click - Starts building segment</li>
+				<li>CTRL + Click - Starts building segment on existing point</li>
+				<li>ALT + Click - Stops building or deletes point</li>
+				<li>SHIFT + Click - On an empty space selects a territory - On a line this selects the line, and DELETE removes the line</li>
+				<li>Click while drawing line - adds points to the line</li>
+				<li>Click while not drawing line - Allows dragging if off a line or adds points if near a line</li>
+				<li>CAPS LOCK - Hide/Show map</li>
+				<li>TAB - Hide/Show addresses</li>
+				<li>` - Hide/Show lines</li>
+				<li>. - Hide/Show points on the lines</li>
+			</ul>
+		</div>
+		<div id="points"></div>
+		<div id="territory_list"></div>
+	<div id="info"></div>
+	</div>
+</body>
+</html>
